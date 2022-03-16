@@ -34,23 +34,6 @@ public class RestApplication implements CommandLineRunner {
         String orderUrl = "http://localhost:8081/order";
         String shoppingCartUrl = "http://localhost:8080/cart";
 
-//        // add customer
-//        restTemplate.postForLocation(customerUrl + "/add", new Customer(
-//                "customer1",
-//                "Suzy",
-//                "James",
-//                "1000 street",
-//                "Fairfield",
-//                "52557",
-//                "12345678",
-//                "suzyjames@gmail.com"
-//        ));
-
-//        //getCustomer
-//        Customer customer = restTemplate.getForObject(customerUrl + "/{cId}", Customer.class, "customer1");
-//        System.out.println("----------- get customer1-----------------------");
-//        System.out.println(customer);
-
         /**** 1 ****/
         //add product1
         restTemplate.postForLocation(productUrl, new Product(
@@ -174,17 +157,10 @@ public class RestApplication implements CommandLineRunner {
                 "101"
         ));
 
-        // get order
+        // get order after placing it
         Order order = restTemplate.getForObject(orderUrl + "/{orderNumber}", Order.class, "101");
         System.out.println("----------- get order-----------------------");
         System.out.println(order);
-
-//
-//        /**** 3 ****/
-//        //get modified product
-//        Product modifyProduct = restTemplate.getForObject(productUrl + "/{productNumber}", Product.class, "product1");
-//        System.out.println("----------- get modifyProduct1-----------------------");
-//        System.out.println(modifyProduct);
 
     }
 
