@@ -16,7 +16,7 @@ public class Customer {
 	private String email;
 	private String phone;
 	private Address address;
-	private Account account;
+
 
 
 	public Customer() {
@@ -79,13 +79,7 @@ public class Customer {
 		this.address = address;
 	}
 
-	public Account getAccount() {
-		return account;
-	}
 
-	public void setAccount(Account account) {
-		this.account = account;
-	}
 
 
 }

@@ -1,108 +1,87 @@
-package com.restapplication.domain;
+package com.project.CustomerService.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("customer")
+@Document(collection ="customer")
 public class Customer {
-    @Id
-    private String cId;
-    private String firstName;
-    private String lastName;
-    private String street;
-    private String city;
-    private String zip;
-    private String phone;
-    private String email;
+	@Id
+	private String customerNumber;
+	private String firstname;
+	private String lastname;
+	private String email;
+	private String phone;
+	private Address address;
+	private Account account;
 
-    public Customer() {}
 
-    public Customer(String cId, String firstName, String lastName, String street, String city, String zip, String phone, String email) {
-        this.cId = cId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.street = street;
-        this.city = city;
-        this.zip = zip;
-        this.phone = phone;
-        this.email = email;
-    }
+	public Customer() {
+	}
 
-    public String getcId() {
-        return cId;
-    }
+	public Customer(String customerNumber, String firstname, String lastname, String email, String phone) {
+		super();
+		this.customerNumber = customerNumber;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.phone = phone;
+	}
 
-    public void setcId(String cId) {
-        this.cId = cId;
-    }
+	public String getCustomerNumber() {
+		return customerNumber;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public void setCustomerNumber(String customerNumber) {
+		this.customerNumber = customerNumber;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public String getFirstname() {
+		return firstname;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public String getLastname() {
+		return lastname;
+	}
 
-    public String getStreet() {
-        return street;
-    }
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public String getZip() {
-        return zip;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
+	public Address getAddress() {
+		return address;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public Account getAccount() {
+		return account;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "cId='" + cId + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", zip='" + zip + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

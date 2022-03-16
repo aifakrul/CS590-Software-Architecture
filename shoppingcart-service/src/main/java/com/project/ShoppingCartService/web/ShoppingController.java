@@ -40,6 +40,7 @@ public class ShoppingController {
 
 	@PostMapping(value = "/cart/remove")
 	public ResponseEntity<?> removeFromCart(@RequestBody CartHolder holder) {
+		System.out.println("zzzzzzzzzzzzzzzz");
 		shoppingService.removeFromShoppingCart(holder.getCartId(), holder.getProductNumber());
 		return new ResponseEntity<ShoppingCart>(HttpStatus.OK);
 	}
