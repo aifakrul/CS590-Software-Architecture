@@ -21,6 +21,11 @@ public class OrderService {
 	OrderRepository orderRepository;
 	CustomerFeignClient customerFeignClient;
 
+	public OrderService(OrderRepository orderRepository, CustomerFeignClient customerFeignClient) {
+		this.orderRepository = orderRepository;
+		this.customerFeignClient = customerFeignClient;
+	}
+
 	public Order getOrder(String orderNumber) {
 		Optional<Order> optOrder = orderRepository.findById(orderNumber);
 		if (optOrder.isPresent()) {

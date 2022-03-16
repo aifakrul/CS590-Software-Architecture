@@ -1,4 +1,4 @@
-package com.project.CustomerService.domain;
+package com.restapplication.domain.order;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,7 +12,7 @@ public class Customer {
 	private String email;
 	private String phone;
 	private Address address;
-	private Account account;
+
 
 
 	public Customer() {
@@ -75,13 +75,15 @@ public class Customer {
 		this.address = address;
 	}
 
-	public Account getAccount() {
-		return account;
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"customerNumber='" + customerNumber + '\'' +
+				", firstname='" + firstname + '\'' +
+				", lastname='" + lastname + '\'' +
+				", email='" + email + '\'' +
+				", phone='" + phone + '\'' +
+				", address=" + address +
+				'}';
 	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-
 }
