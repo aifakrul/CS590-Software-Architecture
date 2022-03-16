@@ -22,7 +22,7 @@ public class RestApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String customerUrl = "http://localhost:8081/customer";
+        String customerUrl = "http://localhost:8082/customer";
         String productUrl = "http://localhost:8091/products";
         String orderUrl = "http://localhost:8080/orders";
         String shoppingCartUrl = "http://localhost:8080/cart";

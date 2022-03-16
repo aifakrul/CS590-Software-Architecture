@@ -53,6 +53,7 @@ public class ShoppingService {
 	}
 
 	public void removeFromShoppingCart(String cartId, String productNumber){
+		System.out.println("hhhhhhhhhhhhhh");
 		Product product = productFeignClient.getProduct(productNumber);
 		Optional<ShoppingCart> cartOptional = shoppingCartRepository.findById(cartId);
 		if (cartOptional.isPresent() && product != null ) {

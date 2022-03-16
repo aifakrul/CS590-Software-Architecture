@@ -41,4 +41,15 @@ public class ProductCatalogService {
 			productRepository.save(product);
 		}		
 	}
+
+	public void updateProduct(String productNumber, double price, String description){
+		Optional<Product> result = productRepository.findById(productNumber);
+		if (result.isPresent()) {
+			Product product = result.get();
+			product.setPrice(price);
+			product.setDescription(description);
+			productRepository.save(product);
+		}
+
+	}
 }

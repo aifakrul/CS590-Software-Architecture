@@ -2,6 +2,7 @@ package com.project.ProductService.web;
 
 import com.project.ProductService.CustomErrorType;
 import com.project.ProductService.domain.Product;
+import com.project.ProductService.domain.ProductHolder;
 import com.project.ProductService.domain.StockHolder;
 import com.project.ProductService.service.ProductCatalogService;
 
@@ -29,6 +30,7 @@ public class ProductController {
 
 	@GetMapping("/product/{productNumber}")
 	public ResponseEntity<?> getProduct(@PathVariable String productNumber) {
+		System.out.println("dddddddddd");
 		Product product = productCatalogService.getProduct(productNumber);
 		if (product == null) {
 			return new ResponseEntity<CustomErrorType>(new CustomErrorType("Product not found= "
@@ -36,6 +38,12 @@ public class ProductController {
 		}
 
 		return new ResponseEntity<Product>(product, HttpStatus.OK);
+	}
+
+	@PostMapping(value = "/product/update")
+	public ResponseEntity<?> updateProduct(@RequestBody ProductHolder holder){
+		productCatalogService.updateProduct(holder.getProductNumber(),holder.getPrice(), holder.getProductDescription());
+		return new ResponseEntity<Product>(HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/stock")

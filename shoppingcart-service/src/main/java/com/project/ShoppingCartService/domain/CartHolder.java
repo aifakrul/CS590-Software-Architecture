@@ -1,22 +1,22 @@
 package com.project.ShoppingCartService.domain;
 
 public class CartHolder {
-    private String cardId;
+    private String cartId;
     private String productNumber;
     private int quantity;
 
-    public CartHolder(String cardId, String productNumber, int quantity) {
-        this.cardId = cardId;
+    public CartHolder(String cartId, String productNumber, int quantity) {
+        this.cartId = cartId;
         this.productNumber = productNumber;
         this.quantity = quantity;
     }
 
     public String getCartId() {
-        return cardId;
+        return cartId;
     }
 
     public void setCartId(String cardId) {
-        this.cardId = cardId;
+        this.cartId = cardId;
     }
 
     public String getProductNumber() {
