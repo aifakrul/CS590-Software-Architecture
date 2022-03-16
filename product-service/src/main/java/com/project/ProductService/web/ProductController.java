@@ -30,7 +30,6 @@ public class ProductController {
 
 	@GetMapping("/product/{productNumber}")
 	public ResponseEntity<?> getProduct(@PathVariable String productNumber) {
-		System.out.println("dddddddddd");
 		Product product = productCatalogService.getProduct(productNumber);
 		if (product == null) {
 			return new ResponseEntity<CustomErrorType>(new CustomErrorType("Product not found= "
