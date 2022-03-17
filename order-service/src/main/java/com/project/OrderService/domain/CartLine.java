@@ -2,7 +2,7 @@ package com.project.OrderService.domain;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+
 public class CartLine {
 	private int quantity;
 	private Product product;

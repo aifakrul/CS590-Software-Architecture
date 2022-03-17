@@ -1,22 +1,15 @@
 package com.project.OrderService.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.apache.tomcat.jni.Address;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection ="customer")
 public class Customer {
-	@Id
+
 	private String customerNumber;
 	private String firstname;
 	private String lastname;
 	private String email;
 	private String phone;
 	private Address address;
-
-
 
 	public Customer() {
 	}
@@ -77,8 +70,5 @@ public class Customer {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
-
-
 
 }

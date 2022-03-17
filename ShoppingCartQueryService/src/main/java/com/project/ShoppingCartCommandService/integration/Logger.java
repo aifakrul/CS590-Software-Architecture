@@ -1,8 +1,8 @@
-package com.project.ShoppingCartQueryService.integration;
-
-import java.util.Date;
+package com.project.ShoppingCartCommandService.integration;
 
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 @Component
 public class Logger {

@@ -19,26 +19,26 @@ public class ShoppingController {
 		this.shoppingService = shoppingService;
 	}
 
-	@PostMapping(value = "/cart/add")
+	@PostMapping(value = "/cartc/add")
 	public ResponseEntity<?> addToCart(@RequestBody CartHolder holder) {
 		shoppingService.addToShoppingCart(holder.getCartId(), holder.getProductNumber(), holder.getQuantity());
 		return new ResponseEntity<ShoppingCart>(HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/cart/remove")
+	@PostMapping(value = "/cartc/remove")
 	public ResponseEntity<?> removeFromCart(@RequestBody CartHolder holder) {
 
 		shoppingService.removeFromShoppingCart(holder.getCartId(), holder.getProductNumber());
 		return new ResponseEntity<ShoppingCart>(HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/cart/change")
+	@PostMapping(value = "/cartc/change")
 	public ResponseEntity<?> changeQuantity(@RequestBody CartHolder holder) {
 		shoppingService.changeQuantity(holder.getCartId(), holder.getProductNumber(), holder.getQuantity());
 		return new ResponseEntity<ShoppingCart>(HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/cart/checkout")
+	@PostMapping(value = "/cartc/checkout")
 	public ResponseEntity<?> checkoutCart(@RequestBody CartHolder cartHolder) {
 		System.out.println(cartHolder.getCartId());
 		shoppingService.sendCheckOutMessage(cartHolder.getCartId());

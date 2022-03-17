@@ -1,6 +1,7 @@
-package com.project.ShoppingCartQueryService.repository;
+package com.project.ShoppingCartCommandService.repository;
 
-import com.project.ShoppingCartQueryService.domain.ShoppingCart;
+import com.project.ShoppingCartCommandService.domain.ShoppingCart;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

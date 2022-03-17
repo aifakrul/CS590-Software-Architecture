@@ -1,31 +1,33 @@
-package com.project.ShoppingCartQueryService.domain;
+package com.project.ShoppingCartCommandService.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@Document(collection ="cart")
+@Document(collection = "cart")
 public class ShoppingCart {
 	@Id
+	@JsonProperty
 	private String cartID;
-	private ArrayList<CartLine> cartLines ;
-
+	@JsonProperty
+	private ArrayList<CartLine> cartLines;
 
 	public ShoppingCart() {
 	}
 
 	public ShoppingCart(String cartID) {
 		this.cartID = cartID;
-		cartLines= new ArrayList<CartLine>();
+		cartLines = new ArrayList<CartLine>();
 	}
-
 
 	public void addToCart(Product product, int quantity) {
 		for (CartLine cartLine : cartLines) {
 			if (cartLine.getProduct().getProductNumber().equals(product.getProductNumber())) {
-				cartLine.setQuantity(cartLine.getQuantity()+quantity);
+				cartLine.setQuantity(cartLine.getQuantity() + quantity);
 				return;
 			}
 		}
@@ -38,39 +40,37 @@ public class ShoppingCart {
 	public void print() {
 		System.out.println("Content of the shopping cart:");
 		for (CartLine cartLine : cartLines) {
-			System.out.println(cartLine.getQuantity() + " "
-					+ cartLine.getProduct().getProductNumber() + " "
-					+ cartLine.getProduct().getDescription() + " "
-					+ cartLine.getProduct().getPrice());
+			System.out.println(cartLine.getQuantity() + " " + cartLine.getProduct().getProductNumber() + " "
+					+ cartLine.getProduct().getDescription() + " " + cartLine.getProduct().getPrice());
 		}
-		System.out.println("Total price ="+getTotalPrice());
+		System.out.println("Total price =" + calculatedTotalPrice());
 	}
-	
-	public double getTotalPrice(){
+
+	public double calculatedTotalPrice() {
 		double totalPrice = 0.0;
 		for (CartLine cline : cartLines) {
-			totalPrice=totalPrice+(cline.getProduct().getPrice() * cline.getQuantity());
+			totalPrice = totalPrice + (cline.getProduct().getPrice() * cline.getQuantity());
 		}
 		return totalPrice;
 	}
-	
-	public void removeFromCart(Product product){
+
+	public void removeFromCart(Product product) {
 		Iterator<CartLine> iter = cartLines.iterator();
-		while (iter.hasNext()){
+		while (iter.hasNext()) {
 			CartLine cline = iter.next();
-			if (cline.getProduct().getProductNumber().equals(product.getProductNumber())){
-					iter.remove();
+			if (cline.getProduct().getProductNumber().equals(product.getProductNumber())) {
+				iter.remove();
 			}
 		}
 	}
 
-	public void changeFromCart(Product product, int quantity){
+	public void changeFromCart(Product product, int quantity) {
 		Iterator<CartLine> iter = cartLines.iterator();
-		while (iter.hasNext()){
+		while (iter.hasNext()) {
 			CartLine cline = iter.next();
-			if (cline.getProduct().getProductNumber().equals(product.getProductNumber())){
-					cline.setQuantity(quantity);
-					return;
+			if (cline.getProduct().getProductNumber().equals(product.getProductNumber())) {
+				cline.setQuantity(quantity);
+				return;
 			}
 		}
 	}
@@ -93,9 +93,6 @@ public class ShoppingCart {
 
 	@Override
 	public String toString() {
-		return "ShoppingCart{" +
-				"cartID='" + cartID + '\'' +
-				", cartLines=" + cartLines +
-				'}';
+		return "ShoppingCart{" + "cartID='" + cartID + '\'' + ", cartLines=" + cartLines + '}';
 	}
 }
