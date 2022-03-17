@@ -32,7 +32,8 @@ public class RestApplication implements CommandLineRunner {
         String productUrl = "http://localhost:8083/product";
         String stockUrl = "http://localhost:8083/stock";
         String orderUrl = "http://localhost:8081/order";
-        String shoppingCartUrl = "http://localhost:8080/cart";
+        String shoppingCartUrl1 = "http://localhost:8080/cart";
+        String shoppingCartUrl2 = "http://localhost:8084/cart";
 
         /**** 1 ****/
         //add product1
@@ -87,51 +88,51 @@ public class RestApplication implements CommandLineRunner {
 
 
         //add product1 to shoppingCart
-        restTemplate.postForLocation(shoppingCartUrl+"/add", new CartHolder(
+        restTemplate.postForLocation(shoppingCartUrl2+"/add", new CartHolder(
                 "101",
                 "123",
                 4
         ));
 
         //add product2 to shoppingCart
-        restTemplate.postForLocation(shoppingCartUrl+"/add", new CartHolder(
+        restTemplate.postForLocation(shoppingCartUrl2+"/add", new CartHolder(
                 "101",
                 "1234",
                 5
         ));
 
         // get shoppingCart
-        ShoppingCart cart = restTemplate.getForObject(shoppingCartUrl + "/{cartId}", ShoppingCart.class, "101");
+        ShoppingCart cart = restTemplate.getForObject(shoppingCartUrl1 + "/{cartId}", ShoppingCart.class, "101");
         System.out.println("----------- get cart-----------------------");
         System.out.println(cart);
 
 
         //delete product2 from shoppingCart
-        restTemplate.postForLocation(shoppingCartUrl+"/remove", new CartHolder(
+        restTemplate.postForLocation(shoppingCartUrl2+"/remove", new CartHolder(
                 "101",
                 "1234",
                 5
         ));
 
         // get shoppingCart
-        ShoppingCart modifiedCart = restTemplate.getForObject(shoppingCartUrl + "/{cartId}", ShoppingCart.class, "101");
+        ShoppingCart modifiedCart = restTemplate.getForObject(shoppingCartUrl1 + "/{cartId}", ShoppingCart.class, "101");
         System.out.println("----------- get cart-----------------------");
         System.out.println(modifiedCart);
 
         //change product1 in shoppingCart
-        restTemplate.postForLocation(shoppingCartUrl+"/change", new CartHolder(
+        restTemplate.postForLocation(shoppingCartUrl2+"/change", new CartHolder(
                 "101",
                 "123",
                 15
         ));
 
         // get shoppingCart
-        ShoppingCart modifiedCart2 = restTemplate.getForObject(shoppingCartUrl + "/{cartId}", ShoppingCart.class, "101");
+        ShoppingCart modifiedCart2 = restTemplate.getForObject(shoppingCartUrl1 + "/{cartId}", ShoppingCart.class, "101");
         System.out.println("----------- get cart-----------------------");
         System.out.println(modifiedCart2);
 
         //checkout shoppingCart
-        restTemplate.postForLocation(shoppingCartUrl+"/checkout", new CartHolder(
+        restTemplate.postForLocation(shoppingCartUrl2+"/checkout", new CartHolder(
                 "101"
         ));
 
