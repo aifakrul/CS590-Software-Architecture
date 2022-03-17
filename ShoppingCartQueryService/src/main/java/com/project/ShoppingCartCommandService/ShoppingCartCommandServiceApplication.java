@@ -1,17 +1,15 @@
-package com.project.ShoppingCartQueryService;
+package com.project.ShoppingCartCommandService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-@EnableDiscoveryClient
-public class ShoppingCartServiceApplication {
+public class ShoppingCartCommandServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShoppingCartServiceApplication.class, args);
+		SpringApplication.run(ShoppingCartCommandServiceApplication.class, args);
 	}
 
 }

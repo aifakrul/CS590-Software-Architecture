@@ -1,78 +1,17 @@
 package com.project.OrderService.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 
-@Document(collection ="cart")
 public class ShoppingCart {
-	@Id
 	private String cartID;
-	private ArrayList<CartLine> cartLines ;
-
+	private ArrayList<CartLine> cartLines;
 
 	public ShoppingCart() {
 	}
 
 	public ShoppingCart(String cartID) {
 		this.cartID = cartID;
-		cartLines= new ArrayList<CartLine>();
-	}
-
-
-	public void addToCart(Product product, int quantity) {
-		for (CartLine cartLine : cartLines) {
-			if (cartLine.getProduct().getProductNumber().equals(product.getProductNumber())) {
-				cartLine.setQuantity(cartLine.getQuantity()+quantity);
-				return;
-			}
-		}
-		CartLine cline = new CartLine();
-		cline.setProduct(product);
-		cline.setQuantity(quantity);
-		cartLines.add(cline);
-	}
-
-	public void print() {
-		System.out.println("Content of the shopping cart:");
-		for (CartLine cartLine : cartLines) {
-			System.out.println(cartLine.getQuantity() + " "
-					+ cartLine.getProduct().getProductNumber() + " "
-					+ cartLine.getProduct().getDescription() + " "
-					+ cartLine.getProduct().getPrice());
-		}
-		System.out.println("Total price ="+getTotalPrice());
-	}
-	
-	public double getTotalPrice(){
-		double totalPrice = 0.0;
-		for (CartLine cline : cartLines) {
-			totalPrice=totalPrice+(cline.getProduct().getPrice() * cline.getQuantity());
-		}
-		return totalPrice;
-	}
-	
-	public void removeFromCart(Product product){
-		Iterator<CartLine> iter = cartLines.iterator();
-		while (iter.hasNext()){
-			CartLine cline = iter.next();
-			if (cline.getProduct().getProductNumber().equals(product.getProductNumber())){
-					iter.remove();
-			}
-		}
-	}
-
-	public void changeFromCart(Product product, int quantity){
-		Iterator<CartLine> iter = cartLines.iterator();
-		while (iter.hasNext()){
-			CartLine cline = iter.next();
-			if (cline.getProduct().getProductNumber().equals(product.getProductNumber())){
-					cline.setQuantity(quantity);
-					return;
-			}
-		}
+		cartLines = new ArrayList<CartLine>();
 	}
 
 	public String getCartID() {
@@ -93,9 +32,6 @@ public class ShoppingCart {
 
 	@Override
 	public String toString() {
-		return "ShoppingCart{" +
-				"cartID='" + cartID + '\'' +
-				", cartLines=" + cartLines +
-				'}';
+		return "ShoppingCart{" + "cartID='" + cartID + '\'' + ", cartLines=" + cartLines + '}';
 	}
 }

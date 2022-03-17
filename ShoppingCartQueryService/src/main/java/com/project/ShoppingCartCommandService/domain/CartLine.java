@@ -1,4 +1,4 @@
-package com.project.ShoppingCartQueryService.domain;
+package com.project.ShoppingCartCommandService.domain;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 

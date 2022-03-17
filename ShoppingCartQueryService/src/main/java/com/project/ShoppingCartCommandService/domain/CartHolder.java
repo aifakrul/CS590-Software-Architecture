@@ -1,4 +1,4 @@
-package com.project.ShoppingCartQueryService.domain;
+package com.project.ShoppingCartCommandService.domain;
 
 public class CartHolder {
     private String cartId;

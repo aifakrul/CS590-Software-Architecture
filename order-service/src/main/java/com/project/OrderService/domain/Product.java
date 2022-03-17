@@ -1,11 +1,9 @@
 package com.project.OrderService.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection ="product")
+
 public class Product {
-	@Id
+
 	String productNumber;
 	double price;
 	String description;
@@ -55,11 +53,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product{" +
-				"productNumber='" + this.productNumber + '\'' +
-				", price=" + this.getPrice()+
-				", description='" + this.getDescription() + '\'' +
-				", stock=" + this.getStock() +
-				'}';
+		return "Product{" + "productNumber='" + this.productNumber + '\'' + ", price=" + this.getPrice()
+				+ ", description='" + this.getDescription() + '\'' + ", stock=" + this.getStock() + '}';
 	}
 }

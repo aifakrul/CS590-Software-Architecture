@@ -1,4 +1,4 @@
-package com.project.ShoppingCartQueryService.integration;
+package com.project.ShoppingCartCommandService.integration;
 
 import org.springframework.stereotype.Component;
 
